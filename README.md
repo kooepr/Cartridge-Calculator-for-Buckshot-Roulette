@@ -1,4 +1,4 @@
-# Cartridge-Calculator for Buckshot-Roulette
+# Cartridge Calculator for Buckshot Roulette
 ## A cartridge manager for buckshot roulette to keep track of the shells in the shotgun
 
 ### What does this do?
