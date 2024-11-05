@@ -37,6 +37,6 @@ timeout -t 2 >nopause >nul
 cls
 goto exec ) else if /i %SHOT%==R (
 goto prep ) else (
-echo Invalid Input
+echo Invalid Input. Check the GitHub ReadMe for valid inputs.
 pause
 goto exec )
