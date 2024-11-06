@@ -16,9 +16,7 @@ cls
 
 :exec
 cls
-color 07
 echo %LIVES% Lives
-color 08
 echo %BLANKS% Blanks
 
 color 0a
@@ -29,15 +27,38 @@ cls
 echo A live round was shot!
 timeout -t 2 >nopause >nul 
 cls
-goto exec ) else if /i %SHOT%==B (
+goto exec 
+) else if /i %SHOT%==B (
 set /a BLANKS=%BLANKS% - 1
 cls
 echo A blank round was shot!
 timeout -t 2 >nopause >nul 
 cls
-goto exec ) else if /i %SHOT%==R (
-goto prep ) else (
+goto exec 
+) else if /i %SHOT%==R (
+goto prep 
+) else if /i %SHOT%==I (
+goto invert
+) else (
 cls
 echo Invalid Input. Check the GitHub ReadMe for valid inputs.
 pause
 goto exec )
+
+:invert
+cls
+echo A polarizer was used.
+set /p POL="After polarization, what was shot?: "
+if /i %POL%==L (
+set /a BLANKS=%BLANKS% - 1
+goto exec
+) else if /i %POL%==B (
+set /a LIVES=%LIVES% - 1
+goto exec
+) else if /i %POL%==C (
+goto exec
+) else (
+echo echo Invalid Input. Check the GitHub ReadMe for valid inputs.
+pause
+goto invert
+)
