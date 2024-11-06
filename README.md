@@ -17,6 +17,10 @@ To restart or prepare for a new round, input R.
     - L | Live Round
     - B | Blank Round
     - C | Cancel
+- P | Burner Phone
+    - L | Live Round
+    - B | Blank Round
+    - Any Digit | Which Round eg. "Sixth Round... Live."
 
 ### Why should I use it?
 This utility will help you remember so you don't have to!
