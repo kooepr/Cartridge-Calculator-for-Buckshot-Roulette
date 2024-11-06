@@ -83,6 +83,11 @@ goto invert
 :phone
 set /p whichshell="Which shell: (1-15)"
 set /p whatshell="What type: (L/B)"
+if /i %whichshell%==C (
+	goto exec
+) else if /i %whatshell%==C (
+	goto exec
+)
 echo Noted!
 timeout -t 2 >nopause >nul
 goto exec
