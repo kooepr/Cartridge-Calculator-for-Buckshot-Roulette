@@ -9,6 +9,9 @@ title CCC
 cls
 
 :prep
+set /a shellcounter=0
+set /a whichshell=0
+set /a whatshell=0
 cls
 set /p LIVES="Number of live rounds: "
 set /p BLANKS="Number of blank rounds: "
@@ -18,27 +21,38 @@ cls
 cls
 echo %LIVES% Lives
 echo %BLANKS% Blanks
+if %shellcounter%==%whichshell% (
+if /i %whatshell%==L ( 
+	echo This shell is LIVE.
+) else if /i %whatshell%==B (
+	echo This shell is BLANK.
+) 
+)
 
 color 0a
-set /p SHOT="What was shot: "
+set /p SHOT="Action: "
 if /i %SHOT%==L (
-set /a LIVES=%LIVES% - 1
-cls
-echo A live round was shot!
-timeout -t 2 >nopause >nul 
-cls
-goto exec 
+	set /a LIVES=%LIVES% - 1
+	cls
+	echo A live round was shot!
+	timeout -t 2 >nopause >nul 
+	cls
+	set /a shellcounter=%shellcounter% + 1
+	goto exec 
 ) else if /i %SHOT%==B (
-set /a BLANKS=%BLANKS% - 1
-cls
-echo A blank round was shot!
-timeout -t 2 >nopause >nul 
-cls
-goto exec 
+	set /a BLANKS=%BLANKS% - 1
+	cls
+	echo A blank round was shot!
+	timeout -t 2 >nopause >nul 
+	cls
+	set /a shellcounter=%shellcounter% + 1
+	goto exec 
 ) else if /i %SHOT%==R (
-goto prep 
+	goto prep 
 ) else if /i %SHOT%==I (
-goto invert
+	goto invert
+) else if /i %SHOT%==P (
+	goto phone
 ) else (
 cls
 echo Invalid Input. Check the GitHub ReadMe for valid inputs.
@@ -51,9 +65,11 @@ echo A polarizer was used.
 set /p POL="After polarization, what was shot?: "
 if /i %POL%==L (
 set /a BLANKS=%BLANKS% - 1
+set /a shellcounter=%shellcounter% + 1
 goto exec
 ) else if /i %POL%==B (
 set /a LIVES=%LIVES% - 1
+set /a shellcounter=%shellcounter% + 1
 goto exec
 ) else if /i %POL%==C (
 goto exec
@@ -62,3 +78,11 @@ echo echo Invalid Input. Check the GitHub ReadMe for valid inputs.
 pause
 goto invert
 )
+
+
+:phone
+set /p whichshell="Which shell: (1-15)"
+set /p whatshell="What type: (L/B)"
+echo Noted!
+timeout -t 2 >nopause >nul
+goto exec
