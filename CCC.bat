@@ -17,6 +17,7 @@ set /p LIVES="Number of live rounds: "
 set /p BLANKS="Number of blank rounds: "
 cls
 
+
 :exec
 cls
 echo %LIVES% Lives
@@ -34,7 +35,7 @@ set /p SHOT="Action: "
 if /i %SHOT%==L (
 	set /a LIVES=%LIVES% - 1
 	cls
-	echo A live round was shot!
+	echo A live round was discharged!
 	timeout -t 2 >nopause >nul 
 	cls
 	set /a shellcounter=%shellcounter% + 1
@@ -42,13 +43,13 @@ if /i %SHOT%==L (
 ) else if /i %SHOT%==B (
 	set /a BLANKS=%BLANKS% - 1
 	cls
-	echo A blank round was shot!
+	echo A blank round was discharged!
 	timeout -t 2 >nopause >nul 
 	cls
 	set /a shellcounter=%shellcounter% + 1
 	goto exec 
 ) else if /i %SHOT%==R (
-	goto prep 
+	goto prep
 ) else if /i %SHOT%==I (
 	goto invert
 ) else if /i %SHOT%==P (
