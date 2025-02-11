@@ -82,6 +82,7 @@ goto invert
 
 
 :phone
+set /a shellcounter=0
 set /p whichshell="Which shell: (1-15)"
 set /p whatshell="What type: (L/B)"
 if /i %whichshell%==C (
